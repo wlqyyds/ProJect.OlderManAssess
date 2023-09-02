@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yx.dao.ResInfoMapper">
+
+    <select id="findByName" parameterType="java.lang.String" resultType="com.yx.po.Resinfo">
+        select * from resinfo
+            where name = #{name}
+    </select>
+
+    <select id="queryByIdcard" parameterType="java.lang.String" resultType="com.yx.po.Resinfo">
+        select * from resinfo
+            where idcard = #{idcard}
+    </select>
+
+    <insert id="insert" parameterType="com.yx.po.Resinfo">
+        insert into resinfo
+        values (#{id,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+                #{ins,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{res1,jdbcType=INTEGER},
+                #{res2,jdbcType=INTEGER}, #{res3,jdbcType=INTEGER}, #{res4,jdbcType=INTEGER},
+                #{fres,jdbcType=INTEGER}, #{sres,jdbcType=INTEGER}, #{order,jdbcType=INTEGER},
+                #{evaname,jdbcType=VARCHAR}, #{subname,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="findAll" resultType="com.yx.po.Resinfo">
+        select * from resinfo
+
+    </select>
+
+    <select id="findAll2" resultType="com.yx.po.Resinfo" parameterType="com.yx.po.MidUtil">
+        select * from resinfo
+        <where>
+
+            <!--姓名-->
+            <if test="ty1==0 and txt1 != '' ">
+                 and name
+                 <if test="extent1 == 0"  >
+                    = '${txt1}'
+                 </if>
+                 <if test="extent1 == 1">
+                     like '%${txt1}%'
+                 </if>
+            </if>
+            <if test="ty1==1 and txt1 != ''">
+                ins
+                <if test="extent1 == 0"  >
+                    = '${txt1}'
+                </if>
+                <if test="extent1 == 1">
+                    like '%${txt1}%'
+                </if>
+            </if>
+            <if test="ty1==2 and txt1 != ''">
+                age
+                <if test="extent1 == 0"  >
+                    = '${txt1}'
+                </if>
+                <if test="extent1 == 1">
+                    like '%${txt1}%'
+                </if>
+            </if>
+            <if test="ty1==3 and txt1 != ''">
+                evaname
+                <if test="extent1 == 0"  >
+                    = '${txt1}'
+                </if>
+                <if test="extent1 == 1">
+                    like '%${txt1}%'
+                </if>
+            </if>
+            <if test="ty1==4 and txt1 != ''">
+                subname
+                <if test="extent1 == 0"  >
+                    = '${txt1}'
+                </if>
+                <if test="extent1 == 1">
+                    like '%${txt1}%'
+                </if>
+            </if>
+
+
+
+            <if test="ty2==0 and link1 == 0 and txt2 != ''">
+                and name
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==1 and link1 == 0 and txt2 != ''">
+                and ins
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==2  and link1 == 0 and txt2 != ''">
+                and age
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==3 and link1 == 0 and txt2 != ''">
+                and evaname
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==4 and link1 == 0 and txt2 != ''">
+                and subname
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+
+            <if test="ty2==0 and link1 == 1 and txt2 != ''">
+                or name
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==1 and link1 == 1 and txt2 != ''">
+                or ins
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==2  and link1 == 1 and txt2 != ''">
+                or age
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==3 and link1 == 1 and txt2 != ''">
+                or evaname
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+            <if test="ty2==4 and link1 == 1 and txt2 != ''">
+                or subname
+                <if test="extent2 == 0"  >
+                    = '${txt2}'
+                </if>
+                <if test="extent2 == 1">
+                    like '%${txt2}%'
+                </if>
+            </if>
+
+
+
+
+            <if test="ty3==0 and link2 == 0 and txt3 != ''">
+                and name
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==1 and link2 == 0 and txt3 != ''">
+                and ins
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==2  and link2 == 0 and txt3 != ''">
+                and age
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==3 and link2 == 0 and txt3 != ''">
+                and evaname
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==4 and link2 == 0 and txt3 != ''">
+                and subname
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+
+            <if test="ty3==0 and link2 == 1 and txt3 != ''">
+                or name
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==1 and link2 == 1 and txt3 != ''">
+                or ins
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==2  and link2 == 1 and txt3 != ''">
+                or age
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==3 and link2 == 1 and txt3 != ''">
+                or evaname
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+            <if test="ty3==4 and link2 == 1 and txt3 != ''">
+                or subname
+                <if test="extent3 == 0"  >
+                    = '${txt3}'
+                </if>
+                <if test="extent3 == 1">
+                    like '%${txt3}%'
+                </if>
+            </if>
+
+        </where>
+
+    </select>
+
+    <select id="findAll3" resultType="com.yx.po.Baseinfo" parameterType="com.yx.po.Baseinfo">
+        select * from baseinfo
+        <where>
+
+            state = 1
+
+            <!--姓名-->
+            <if test="name!=null">
+                and name like '%${name}%'
+            </if>
+            <!--身份证-->
+            <if test="idcard!=null">
+                and idcard like '%${idcard}%'
+            </if>
+            <!--电话号-->
+            <if test="ssnum!=null">
+                and ssnum like '%${ssnum}%'
+            </if>
+
+        </where>
+
+    </select>
+
+    <select id="findIns" resultType="java.lang.String">
+        select distinct ins from resinfo
+    </select>
+
+    <select id="findByIns" parameterType="java.lang.String" resultType="com.yx.po.Resinfo">
+        select * from resinfo where ins = #{ins}
+    </select>
+    <select id="findByAges" resultType="com.yx.po.Resinfo">
+        select * from resinfo where ins = #{ins} and (age between #{age1} and  #{age2})
+    </select>
+</mapper>

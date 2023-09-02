@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yx.dao.B2Mapper">
+
+    <select id="queryB2ByName" parameterType="java.lang.String" resultType="com.yx.po.B2">
+        select * from b2
+        where name = #{name}
+    </select>
+
+    <insert id="insert" parameterType="com.yx.po.B2">
+        insert into b2
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR},
+                #{data,jdbcType=VARCHAR}, #{cause,jdbcType=INTEGER}, #{b21,jdbcType=INTEGER},
+                #{b22,jdbcType=INTEGER}, #{b23,jdbcType=INTEGER}, #{b24,jdbcType=INTEGER},
+                #{b2,jdbcType=INTEGER}, #{order,jdbcType=INTEGER},#{evaname,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="queryB2ById" parameterType="java.lang.String" resultType="com.yx.po.B2">
+        select *
+        from b2
+        where id = #{id};
+    </select>
+
+    <select id="queryB2ByIdcard" parameterType="java.lang.String" resultType="com.yx.po.B2">
+        select *
+        from b2
+        where idcard = #{idcard}
+
+    </select>
+
+</mapper>
